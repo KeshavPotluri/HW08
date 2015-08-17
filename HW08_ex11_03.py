@@ -12,20 +12,38 @@
 # alphabetical histogram of pledge.txt
 ##############################################################################
 
+import re
+
 def print_hist_old(h):
     for c in h:
         print c, h[c]
 
 
 def print_hist_new(h):
-    pass
-
+	for c in sorted(h):
+		print c, h[c]
 
 ##############################################################################
 ################### INSERT COMPLETED CODE FROM 11_02 BELOW: ##################
 ##############################################################################
 
+def histogram_new(s):
+    d = dict()
+    for c in s:
+        d[c] = d.get(c,0) + 1
+    return d
 
+def get_pledge_list():
+    """ Opens pledge.txt and converts to a list, each item is a word in 
+    the order it appears in the original file. returns the list.
+    """
+    # Your code here.
+    pledge_list = []
+    fin = open("pledge.txt", "r")
+    text = fin.read()
+    pledge_list = re.findall(r"[\w']+", text)
+    fin.close()
+    return pledge_list
 
 
 ##############################################################################
@@ -36,7 +54,7 @@ def main():
     """ Calls print_hist_new with the appropriate arguments to print the 
     histogram of pledge.txt.
     """
-    pass
+    print_hist_new(histogram_new(get_pledge_list()))
 
 if __name__ == '__main__':
     main()

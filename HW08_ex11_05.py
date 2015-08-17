@@ -12,6 +12,7 @@
 #    '2:'
 #    '3: ["the"]'
 ##############################################################################
+import re
 
 def invert_dict_old(d):
     inverse = dict()
@@ -25,18 +26,37 @@ def invert_dict_old(d):
 
 
 def invert_dict_new(d):
-    pass
+    inverse = dict()
+    for key in d:
+        val = d[key]
+        inverse.setdefault(val,list()).append(key)
+    return inverse
 
 
 def print_hist_newest(d):
-    pass
+    for c in sorted(d):
+        print str(c) +": " + str(d[c])
 
 ##############################################################################
 ################### INSERT COMPLETED CODE FROM 11_02 BELOW: ##################
 ##############################################################################
+def histogram_new(s):
+    d = dict()
+    for c in s:
+        d[c] = d.get(c,0) + 1
+    return d
 
-
-
+def get_pledge_list():
+    """ Opens pledge.txt and converts to a list, each item is a word in 
+    the order it appears in the original file. returns the list.
+    """
+    # Your code here.
+    pledge_list = []
+    fin = open("pledge.txt", "r")
+    text = fin.read()
+    pledge_list = re.findall(r"[\w']+", text)
+    fin.close()
+    return pledge_list
 
 ##############################################################################
 ################### INSERT COMPLETED CODE FROM 11_02 ABOVE: ##################

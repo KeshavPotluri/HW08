@@ -20,6 +20,7 @@
 ##############################################################################
 
 # Imports
+import re
 
 # Body
 
@@ -35,15 +36,22 @@ def histogram_old(s):
     return d
 
 def histogram_new(s):
-    pass
+    d = dict()
+    for c in s:
+        d[c] = d.get(c,0) + 1
+    return d
 
 def get_pledge_list():
     """ Opens pledge.txt and converts to a list, each item is a word in 
     the order it appears in the original file. returns the list.
     """
     # Your code here.
-    pass
-    #return pledge_list (uncomment this)
+    pledge_list = []
+    fin = open("pledge.txt", "r")
+    text = fin.read()
+    pledge_list = re.findall(r"[\w']+", text)
+    fin.close()
+    return pledge_list 
 
 ##############################################################################
 def main():  # DO NOT CHANGE BELOW

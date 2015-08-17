@@ -1,13 +1,21 @@
 #!/usr/bin/env python
 # Exercise 1  
 # Write a function that reads the words in words.txt and stores them as keys
-# in a dictionary (returning the dictionary). It doesn’t matter what the 
+# in a dictionary (returning the dictionary). It doesn't matter what the 
 # values are. Then you can use the in operator as a fast way to check whether
 # a string is in the dictionary.
 ##############################################################################
 
 def store_to_dict():
-    pass
+    fin = open("words.txt", "r")
+    dictionary = {}
+    count = 0
+    for line in fin:
+    	dictionary[line.strip()] = count
+    	count+=1 
+    fin.close()
+    return dictionary
+
 
 
 ##############################################################################
