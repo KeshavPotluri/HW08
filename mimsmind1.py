@@ -85,6 +85,12 @@ def cows_and_bulls():
 				print "Congratulations. You guessed the correct number in ", 
 				print "{0} tries.".format(count)
 				break
+			# If the user is not able to guess the correct number and exhausts all
+			# the chances, throw a message.
+			elif count == numberOfChances:
+				print "Sorry. You did not guess the correct number in {0} tries.".format(numberOfChances), 
+				print "The correct number is {0}.".format(randomInteger)
+				break
 			else:
 				# Get the number of bulls by comparing digits at the same index
 				for j in range(len(userInput)):
@@ -103,12 +109,7 @@ def cows_and_bulls():
 				# Tell the user the number of cows and bulls
 				userInput = raw_input("{0} bulls(s), {1} cow(s). Try again: ".format(numberOfBulls, numberOfCows - numberOfBulls))
 
-		# If the user is not able to guess the correct number and exhausts all
-		# the chances, throw a message.
-		if count == numberOfChances:
-			print "Sorry. You did not guess the correct number in {0} tries.".format(numberOfChances), 
-			print "The correct number is {0}.".format(randomInteger)
-			break
+		
 
 
 ###############################################################################
